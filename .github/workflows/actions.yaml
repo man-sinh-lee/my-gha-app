@@ -1,4 +1,4 @@
-name: test
+name: test-linux-commands
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  build:
+  get_os_info:
 
     name: my job
     runs-on: ${{ matrix.os }}
@@ -18,10 +18,10 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Use OS in ${{ matrix.os }}
+    - name: Use os in ${{ matrix.os }}
       uses: actions/checkout@v2
       with: 
         os: ${{ matrix.os }}
     - run: |
           cat /etc/os-release
-          echo $HOSTNAME
+          echo "HOSTNAME: $HOSTNAME"
