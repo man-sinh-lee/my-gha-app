@@ -19,9 +19,15 @@ jobs:
     steps:
     - name: checkout
       uses: actions/checkout@v2
+
     - name: Use os in ${{ matrix.os }}
       uses: actions/checkout@v2
+
     - name: run command
       run: |
-          cat /etc/os-release
           echo "HOSTNAME: $HOSTNAME"
+          echo "Memory usage:"
+          free -ht
+          echo "Operating System"
+          cat /etc/os-release
+          
