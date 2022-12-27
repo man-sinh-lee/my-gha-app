@@ -6,25 +6,25 @@ on:
       - main
 
 jobs:
-  name: bash-commands
-  runs-on: ${{ matrix.os }}
-  
-  strategy:
-    matrix:
-      os: [ubuntu-latest, ubuntu-20.04, ubuntu-18.04]
+  bash-commands:
+    runs-on: ${{ matrix.os }}
+    
+    strategy:
+      matrix:
+        os: [ubuntu-latest, ubuntu-20.04, ubuntu-18.04]
 
-  steps:
-  - name: checkout
-    uses: actions/checkout@v2
+    steps:
+    - name: checkout
+      uses: actions/checkout@v2
 
-  - name: Use os in ${{ matrix.os }}
-    uses: actions/checkout@v2
+    - name: Use os in ${{ matrix.os }}
+      uses: actions/checkout@v2
 
-  - name: run command
-    run: |
-        echo "HOSTNAME: $HOSTNAME"
-        echo "Memory usage:"
-        free -ht
-        echo "Operating System"
-        cat /etc/os-release
-        
+    - name: run command
+      run: |
+          echo "HOSTNAME: $HOSTNAME"
+          echo "Memory usage:"
+          free -ht
+          echo "Operating System"
+          cat /etc/os-release
+          
