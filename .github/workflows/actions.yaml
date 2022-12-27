@@ -19,6 +19,9 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Use OS in ${{ matrix.os }}
+      uses: actions/checkout@v2
+      with: 
+        os: ${{ matrix.os }}
     - run: |
           cat /etc/os-release
           echo $HOSTNAME
