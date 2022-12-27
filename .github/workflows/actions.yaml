@@ -1,0 +1,23 @@
+name: test shell command
+
+on: 
+  push:
+    branches:
+    - master
+
+jobs:
+  test_command:
+    name: run_commands
+    runs-on: ${{ matrix.os }}
+  strategy:
+    matrix:
+      os: [ubuntu-latest, ubuntu-20.04, ubuntu-18.04]
+
+  steps:
+  - uses: actions/checkout@v2
+  - run: |
+        cat /etc/os-release
+        ip a s
+        free -ht
+    with:
+      os: ${{ matrix.os }}
