@@ -1,23 +1,24 @@
-name: test shell command
+name: test
 
-on: 
+on:
   push:
     branches:
-    - master
+      - master
 
 jobs:
-  test_command:
-    name: run_commands
-    runs-on: ${{ matrix.os }}
-  strategy:
-    matrix:
-      os: [ubuntu-latest, ubuntu-20.04, ubuntu-18.04]
+  build:
 
-  steps:
-  - uses: actions/checkout@v2
-  - run: |
-        cat /etc/os-release
-        ip a s
-        free -ht
-    with:
-      os: ${{ matrix.os }}
+    name: my job
+    runs-on: ${{ matrix.os }}
+    
+    strategy:
+      matrix:
+        os: [ubuntu-latest, ubuntu-20.04, ubuntu-18.04]
+
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use OS in ${{ matrix.os }}
+    - run: |
+          cat /etc/os-release
+          echo $HOSTNAME
