@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  get_os_info:
+  run:
 
     name: my job
     runs-on: ${{ matrix.os }}
